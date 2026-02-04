@@ -10,10 +10,9 @@ class StdnumField(forms.CharField):
     formats = None
     alphabets = None
 
-    def __init__(self, max_length=None, min_length=None, strip=True,
+    def __init__(self, 
                  formats=None, alphabets=None, *args, **kwargs):
-        super(StdnumField, self).__init__(max_length, min_length, strip,
-                                          *args, **kwargs)
+        super(StdnumField, self).__init__(*args, **kwargs)
         if formats is None:
             raise ValueError('StdnumField defined without formats')
         formats = listify(formats)
