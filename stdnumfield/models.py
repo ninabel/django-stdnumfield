@@ -1,8 +1,7 @@
 # coding=utf-8
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
-from django.utils.itercompat import is_iterable
-from six import string_types
+from collections.abc import Iterable
 
 from stdnumfield.validators import StdnumFormatValidator
 from . import settings
@@ -21,7 +20,7 @@ class StdNumField(models.CharField):
     def __init__(self, formats, *args, **kwargs):
         if formats is None:
             raise ImproperlyConfigured('StdNumField defined without formats')
-        if not is_iterable(formats) or isinstance(formats, string_types):
+        if not isinstance(formats, Iterable) or isinstance(formats, str):
             formats = [formats]
         for format in formats:
             if format not in settings.DEFAULT_FORMATS:

@@ -66,7 +66,7 @@ class FormFieldInitTest(TestCase):
             error_messages={'stdnum_format': 'test_exception'},
         )
 
-        self.assertRaisesRegexp(
+        self.assertRaisesRegex(
             ValidationError,
             'test_exception',
             field.clean,

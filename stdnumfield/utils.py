@@ -1,8 +1,8 @@
 # coding=utf-8
 import importlib
 
-from django.utils.itercompat import is_iterable
-from six import string_types
+from collections.abc import Iterable
+
 
 from stdnumfield import STDNUM_FORMATS
 
@@ -38,6 +38,6 @@ def listify(value):
     :param value: any
     :return: list
     """
-    if not is_iterable(value) or isinstance(value, string_types):
+    if not isinstance(value, Iterable) or isinstance(value, str):
         value = [value]
     return value
